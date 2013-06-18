@@ -49,22 +49,22 @@ int main(int argc, char **argv){
     // User set parameters
     cl_int chain_length = 200000;                     // Allocate to store this much chain, sampler runs this many steps at once
 
-    int burn_length = 1000000;
+    int burn_length = 1000000;                        // Length of burn in
 
-    cl_int annealing_loops = 20;                      // Run this many temperatures
+    cl_int annealing_loops = 20;                      // Run this many temperatures of simulated annealing
     cl_int steps_per_loop = 50000;                    // This many steps each
 
     cl_int dimension = N_TH + N_STEPS * NX ;          // Dimension of the state vector
     cl_int walkers_per_group = 1024;                  // Total number of walkers is twice this
-    size_t work_group_size = 1;                       // Work group size. Use 1 for CPU, larger number for GPU
+    size_t work_group_size = 32;                      // Work group size. Use 1 for CPU, larger number for GPU
     double a = 1.4;                                   // Coefficient for range of 'z' random variable
     cl_int pdf_number = 0;                            // Does not matter in this example
     const char *plat_name = CHOOSE_INTERACTIVELY;
     const char *dev_name  = CHOOSE_INTERACTIVELY;
 
 
-    // set these parameters for a debug run
-    int easy = 1;
+    // set this parameter for a debug run
+    int easy = 0;
     if(easy){
         chain_length     = 10000;
         burn_length      = 10000;
