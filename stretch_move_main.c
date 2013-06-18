@@ -135,6 +135,10 @@ int main(int argc, char **argv){
     // run acor to estimate autocorrelation time
     run_acor(samp);
 
+    // Output some histograms to Matlab, don't output gnuplot
+    char matlab_hist = 1, gnuplot_hist = 0;
+    output_histograms(samp, matlab_hist, gnuplot_hist);
+
     // free resources
     free_sampler(samp);
 
